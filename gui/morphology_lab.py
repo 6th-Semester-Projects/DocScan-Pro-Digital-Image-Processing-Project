@@ -52,7 +52,8 @@ class MorphologyLabView(ctk.CTkFrame):
         self.sl_it.set(1)
         self.sl_it.pack(fill="x", padx=20, pady=5)
         
-        ctk.CTkButton(ctrl, text="Load Binarized Image", fg_color="#1b5e20", hover_color="#2e7d32", command=self._load_source).pack(fill="x", padx=20, pady=30)
+        ctk.CTkButton(ctrl, text="Load Binarized Image", fg_color="#1b5e20", hover_color="#2e7d32", command=self._load_source).pack(fill="x", padx=20, pady=(30, 5))
+        ctk.CTkButton(ctrl, text="💾 Save Result", fg_color="#1565c0", hover_color="#0d47a1", command=self._save_result).pack(fill="x", padx=20, pady=(5, 20))
         
         # Right Display Panel
         self.disp = ctk.CTkFrame(self, fg_color=BG_CARD, corner_radius=12)
@@ -93,6 +94,22 @@ class MorphologyLabView(ctk.CTkFrame):
         self.source_img = img
         self._apply()
         self.log("Loaded source image into Morphology Lab.")
+        
+    def _save_result(self):
+        if self.processed_img is None:
+            self.log("No morphology result to save.")
+            return
+            
+        from tkinter import filedialog
+        import os
+        path = filedialog.asksaveasfilename(
+            defaultextension=".png", 
+            initialfile="DocScan_Morphology.png",
+            filetypes=[("PNG Image", "*.png"), ("JPEG Image", "*.jpg"), ("All Files", "*.*")]
+        )
+        if path:
+            cv2.imwrite(path, self.processed_img)
+            self.log(f"Saved morphology result to {os.path.basename(path)}")
         
     def _apply(self, *args):
         if self.source_img is None: return
