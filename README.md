@@ -117,7 +117,7 @@ Developed for the 6th Semester Digital Image Processing Course (CS 345) at **Air
 - **Zain Riaz**
 - **Zahid Zafar**
 
-*Submitted to: Mam Fatima Yousuf*
+*Submitted to: Sir Faisal Idrees*
 
 ---
 <div align="center">
