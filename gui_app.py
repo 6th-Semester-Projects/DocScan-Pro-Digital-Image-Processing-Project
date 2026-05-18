@@ -233,6 +233,10 @@ class DocScanProApp(ctk.CTk):
                                   fg_color="#b71c1c", hover_color="#7f0000", command=self.reset_app)
         btn_reset.pack(side="right", padx=10)
         
+        btn_save = ctk.CTkButton(tool_frame, text="💾 Save Image", font=FONT_SUBHEADING, height=30, width=120,
+                                 fg_color="#1565c0", hover_color="#0d47a1", command=self.save_current_image)
+        btn_save.pack(side="right", padx=10)
+        
         # Image Display Canvas
         self.img_display = ImageDisplay(center)
         self.img_display.grid(row=1, column=0, sticky="nsew")
@@ -283,7 +287,8 @@ class DocScanProApp(ctk.CTk):
             self._process_load(path)
             
     def load_sample(self):
-        sample_path = os.path.join(os.path.dirname(__file__), "input_images", "test_document.jpg")
+        base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
+        sample_path = os.path.join(base_path, "input_images", "test_document.jpg")
         if os.path.exists(sample_path):
             self._process_load(sample_path)
         else:
@@ -486,6 +491,21 @@ class DocScanProApp(ctk.CTk):
             
         self.images["Edges"] = res
         self.show_stage("Edges")
+
+    def save_current_image(self):
+        if not hasattr(self, 'current_stage') or self.current_stage not in self.images:
+            self.log_panel.log("No image currently displayed to save.")
+            return
+            
+        img_to_save = self.images[self.current_stage]
+        path = filedialog.asksaveasfilename(
+            defaultextension=".png", 
+            initialfile=f"DocScan_{self.current_stage.replace(' ', '_')}.png",
+            filetypes=[("PNG Image", "*.png"), ("JPEG Image", "*.jpg"), ("All Files", "*.*")]
+        )
+        if path:
+            cv2.imwrite(path, img_to_save)
+            self.log_panel.log(f"Saved {self.current_stage} image to {os.path.basename(path)}")
 
     def export_report(self):
         if not self.pipeline_ran:
