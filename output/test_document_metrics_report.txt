@@ -1,0 +1,58 @@
+============================================================
+  DOCUMENT SCANNER & OCR PRE-PROCESSOR
+  Quality Metrics Report
+============================================================
+  Generated: 2026-05-17 16:08:26
+
+------------------------------------------------------------
+  INPUT DOCUMENT INFORMATION
+------------------------------------------------------------
+  filepath            : E:\4th semester tasks\DIP-LABS\DIP-Project\input_images\test_document.jpg
+  filename            : test_document
+  width               : 900
+  height              : 1200
+  channels            : 3
+  dtype               : uint8
+  filesize_kb         : 618.5 KB
+  total_pixels        : 1080000
+
+------------------------------------------------------------
+  PROCESSING PIPELINE
+------------------------------------------------------------
+  Stage 1: Load Image
+  Stage 2: Geometric Correction (Perspective + Deskew)
+  Stage 3: Frequency Filtering (Butterworth LPF, D0=60)
+  Stage 4: Contrast Enhancement (Histogram Equalization)
+  Stage 5: Adaptive Binarization (Sauvola)
+  Stage 6: Layout Analysis (Text/Image Separation)
+
+------------------------------------------------------------
+  QUALITY METRICS
+------------------------------------------------------------
+
+  --- After FFT Filtering ---
+  MSE  : 539.6772
+  PSNR : 20.81 dB
+  SSIM : 0.8466
+
+  --- After Enhancement ---
+  MSE  : 5029.0516
+  PSNR : 11.12 dB
+  SSIM : 0.1965
+
+  --- After Binarization ---
+  MSE  : 15077.2480
+  PSNR : 6.35 dB
+  SSIM : 0.1050
+
+------------------------------------------------------------
+  METRIC INTERPRETATION GUIDE
+------------------------------------------------------------
+  MSE  -> Lower is better (0 = identical images)
+  PSNR -> Higher is better (>30 dB = excellent)
+  SSIM -> Higher is better (1.0 = identical)
+
+============================================================
+  Air University Multan Campus - Spring 2026
+  CS 345: Digital Image Processing
+============================================================

@@ -1,0 +1,57 @@
+============================================================
+  DOCUMENT SCANNER & OCR PRE-PROCESSOR
+  Quality Metrics Report
+============================================================
+  Generated: 2026-05-18 19:04:30
+
+------------------------------------------------------------
+  INPUT DOCUMENT INFORMATION
+------------------------------------------------------------
+  filename            : document
+  filesize_kb         : 100.0 KB
+
+------------------------------------------------------------
+  PROCESSING PIPELINE
+------------------------------------------------------------
+  Stage 1: Original
+  Stage 2: Corrected
+  Stage 3: FFT Filtered
+  Stage 4: Enhanced
+  Stage 5: Binarized
+  Stage 6: Layout
+
+------------------------------------------------------------
+  QUALITY METRICS
+------------------------------------------------------------
+
+  --- FFT Filtered ---
+  MSE  : 316.5230
+  PSNR : 23.13 dB
+  SSIM : 0.6310
+
+  --- Enhanced ---
+  MSE  : 644.3566
+  PSNR : 20.04 dB
+  SSIM : 0.6096
+
+  --- Binarized ---
+  MSE  : 3456.3089
+  PSNR : 12.74 dB
+  SSIM : 0.6094
+
+  --- Noise Demo ---
+  MSE  : 232.9561
+  PSNR : 24.46 dB
+  SSIM : 0.5124
+
+------------------------------------------------------------
+  METRIC INTERPRETATION GUIDE
+------------------------------------------------------------
+  MSE  -> Lower is better (0 = identical images)
+  PSNR -> Higher is better (>30 dB = excellent)
+  SSIM -> Higher is better (1.0 = identical)
+
+============================================================
+  Air University Multan Campus - Spring 2026
+  CS 345: Digital Image Processing
+============================================================
